@@ -25,33 +25,42 @@
         </tr>
       </table>
 
+
+
       <table class='table'>
-        <tr>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Comment</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
           <% @book.book_comments.each do |book_comment| %>
-            <td>
-              <%= link_to (@book.user) do %>
-                <%= image_tag book_comment.user.get_profile_image, size: '100x100' %><br>
-                <%= book_comment.user.name %>
-              <% end %>
-            </td>
-            <td><%= book_comment.comment %></td>
+            <tr>
+              <td>
+                <%= link_to (@book.user) do %>
+                  <%= image_tag book_comment.user.get_profile_image, size: '100x100' %><br>
+                  <%= book_comment.user.name %>
+                <% end %>
+              </td>
+              <td><%= book_comment.comment %></td>
+              <td>
+                <% if book_comment.user == current_user %>
+                  <%= link_to 'Destroy', book_book_comment_path(@book.id, book_comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                  <%# book_book_comment_path(@book.id)からbook_book_comment_path(@book.id, book_comment.id)に変更。本の情報とコメントの情報を渡す %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-        </tr>
+        </tbody>
       </table>
 
-      <table class="table">
-        <tr>
           <%= form_with model: [@book, @book_comment] do |f| %>
-            <td><%= f.text_area :comment, rows: '10', placeholder: "コメントをここに" %></td>
-            <td><%= f.submit "送信" %></td>
-            <td>
-              <% if @book_comment.user == current_user %>
-                <%= link_to 'Destroy', book_book_comment_path(@book.id), method: :delete %>
-              <% end %>
-            </td>
+            <%= f.text_area :comment, size: '85x5' %>
+            <%= f.submit "送信" %>
           <% end %>
-        </tr>
-      </table>
 
     </div>
   </div>
