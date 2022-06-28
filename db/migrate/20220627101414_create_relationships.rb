@@ -2,7 +2,8 @@ class CreateRelationships < ActiveRecord::Migration[6.1]
   def change
     create_table :relationships do |t|
       t.integer :follower_id
-      t.integer :folloed_id
+      t.integer :followed_id
+      #folloed_idになっていてカラムが無いとエラーで言われた
 
       t.timestamps
     end

@@ -1,4 +1,7 @@
 class Relationship < ApplicationRecord
-  belongs_to :follower, class_name: "user"
-  belongs_to :followed, class_name: "user"
+
+  # class_name: "User"でUserモデルを参照
+  belongs_to :follower, class_name: "User" #クラスは頭文字は大文字
+  belongs_to :followed, class_name: "User"
+
 end
