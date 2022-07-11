@@ -12,7 +12,6 @@
         <td>
           <% if book_comment.user == current_user %>
             <%= link_to 'Destroy', book_book_comment_path(book.id, book_comment.id), method: :delete, remote: true, class: "btn btn-danger pull-right" %>
-            <%# book_book_comment_path(@book.id)からbook_book_comment_path(@book.id, book_comment.id)に変更。本の情報とコメントの情報を渡す %>
           <% end %>
         </td>
       </tr>
