@@ -5,6 +5,8 @@ class Book < ApplicationRecord
   validates :body, presence:true,length:{maximum:200}
   has_many :book_comments, dependent: :destroy
 
+  has_many :view_counts, dependent: :destroy
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
