@@ -9,7 +9,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import jQuery from "jquery";
 import "popper.js";
-import "bootstrap";
+import "bootstrap"
+
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application"
 
@@ -18,3 +19,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 window.$ = jQuery;
+global.$ = jQuery;
