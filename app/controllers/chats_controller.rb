@@ -18,6 +18,11 @@ class ChatsController < ApplicationController
     @chat = Chat.new(room_id: @room.id) #チャットの投稿用の変数
   end
 
+  def create
+    @chat = current_user.chats.new(chat_params)
+    render :validater unless @chat.save
+  end
+
   private
   def chat_params
     params.require(:chat).permit(:message, :room_id)
